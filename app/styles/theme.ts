@@ -1,6 +1,6 @@
 export const theme = {
 	colors: {
-		primary: '#005BA8',
+		primary: '#bb2525',
 		secondary: '#E81E25',
 		background: '#FFFFFF',
 		text: {
@@ -23,7 +23,6 @@ export const theme = {
 			body: 'SourceSerif-Regular',
 			bodyBold: 'SourceSerif-Bold'
 		},
-
 		fontSize: {
 			xs: 12,
 			sm: 14,

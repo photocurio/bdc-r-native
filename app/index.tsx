@@ -50,6 +50,10 @@ export default function Home() {
 		)
 	}
 
+	const onHTMLLoaded = (html: string) => {
+		console.log('Rendered elements:', html)
+	}
+
 	return (
 		<ScrollView
 			style={styles.container}
@@ -62,7 +66,12 @@ export default function Home() {
 					<Text style={styles.title}>{state.data.title?.rendered}</Text>
 					<RenderHtml
 						contentWidth={width}
+						debug={true}
+						onHTMLLoaded={onHTMLLoaded}
+						enableExperimentalBRCollapsing={true}
 						source={{ html: state.data.content?.rendered || '' }}
+						classesStyles={classesStyles}
+						tagsStyles={tagsStyles}
 					/>
 				</View>
 			) : null}
@@ -110,7 +119,22 @@ const tagsStyles = {
 	},
 	a: {
 		color: theme.colors.primary,
-	},
-	// ... other tag styles
-};
+	}
+}
 
+const classesStyles = {
+	'a-article__wrapper': {
+		display: 'flex' as const,
+		flexDirection: 'row' as const,
+		alignItems: 'start' as const,
+	},
+	'a-article--card-featured a-article__wrapper': {
+		flexDirection: 'column' as const,
+	},
+	'a-article__image': {
+		marginLeft: 0,
+	},
+	'another-class': {
+		backgroundColor: '#f0f0f0',
+	}
+}
